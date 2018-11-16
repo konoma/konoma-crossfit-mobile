@@ -50,6 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sources\CrossFit.cs" />
     <Compile Include="Sources\DeviceInfo.cs" />
+    <Compile Include="Sources\Threading.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

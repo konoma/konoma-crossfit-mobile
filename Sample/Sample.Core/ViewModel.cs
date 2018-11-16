@@ -1,4 +1,5 @@
-﻿using Konoma.CrossFit;
+﻿
+using Konoma.CrossFit;
 
 namespace Sample.Core
 {
@@ -8,9 +9,7 @@ namespace Sample.Core
 
         public int IncreaseCounter()
         {
-            if (CrossFit.Shared.GetDeviceInfo().Check(DevicePlatform.iOS))
-                this.Counter += 1;
-
+            this.Counter += 1;
             return this.Counter;
         }
     }

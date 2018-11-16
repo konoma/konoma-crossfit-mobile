@@ -17,7 +17,7 @@ namespace Konoma.CrossFit
 
         #endregion
 
-        #region Data
+        #region Device Info
 
         public DevicePlatform Platform { get; } = DevicePlatform.iOS;
 

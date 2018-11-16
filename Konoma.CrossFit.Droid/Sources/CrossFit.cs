@@ -10,6 +10,7 @@ namespace Konoma.CrossFit
             var registry = context.ServiceRegistry;
 
             registry.RegisterService<IDeviceInfo>(() => new DeviceInfo());
+            registry.RegisterService<IThreading>(() => new Threading());
 
             registrations?.Invoke(registry);
 
