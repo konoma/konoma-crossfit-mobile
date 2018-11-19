@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+    <metadata>
+        <id>Konoma.CrossFit</id>
+        <version>0.1.0</version>
+        <authors>Konoma GmbH</authors>
+        <owners>konoma</owners>
+        <projectUrl>http://github.com/konoma/crossfit</projectUrl>
+        <description>A small library to support development for Android/iOS cross-platform apps.</description>
+    </metadata>
+    <files>
+        <file src="Konoma.CrossFit/bin/Release/netstandard2.0/Konoma.CrossFit.dll" target="lib/netstandard2.0" />
+        <file src="Konoma.CrossFit/bin/Release/netstandard2.0/Konoma.CrossFit.pdb" target="lib/netstandard2.0" />
+        
+        <file src="Konoma.CrossFit/bin/Release/netstandard2.0/Konoma.CrossFit.dll" target="lib/monoandroid81" />
+        <file src="Konoma.CrossFit/bin/Release/netstandard2.0/Konoma.CrossFit.pdb" target="lib/monoandroid81" />
+        <file src="Konoma.CrossFit.Droid/bin/Release/Konoma.CrossFit.Droid.dll" target="lib/monoandroid81" />
+        <file src="Konoma.CrossFit.Droid/bin/Release/Konoma.CrossFit.Droid.pdb" target="lib/monoandroid81" />
+        
+        <file src="Konoma.CrossFit/bin/Release/netstandard2.0/Konoma.CrossFit.dll" target="lib/xamarinios10" />
+        <file src="Konoma.CrossFit/bin/Release/netstandard2.0/Konoma.CrossFit.pdb" target="lib/xamarinios10" />
+        <file src="Konoma.CrossFit.iOS/bin/Release/Konoma.CrossFit.iOS.dll" target="lib/xamarinios10" />
+        <file src="Konoma.CrossFit.iOS/bin/Release/Konoma.CrossFit.iOS.pdb" target="lib/xamarinios10" />
+    </files>
+</package>

@@ -14,7 +14,4 @@
     <Folder Include="Sources\" />
     <Folder Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Class1.cs" />
-  </ItemGroup>
 </Project>
