@@ -49,6 +49,6 @@ namespace Konoma.CrossFit
 
     public static class ThreadingContextExtensions
     {
-        public static IThreading GetThreading(this CrossFit.Context context) => context.GetService<IThreading>();
+        public static IThreading GetThreading(this CrossFit.PlatformContext context) => context.GetService<IThreading>();
     }
 }

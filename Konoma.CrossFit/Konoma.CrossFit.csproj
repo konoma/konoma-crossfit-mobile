@@ -13,5 +13,6 @@
   <ItemGroup>
     <Folder Include="Sources\" />
     <Folder Include="Properties\" />
+    <Folder Include="Sources\Services\" />
   </ItemGroup>
 </Project>

@@ -3,9 +3,9 @@ using System;
 
 namespace Konoma.CrossFit
 {
-    public static class CrossFitExtensions
+    public static class PlatformContextExtensions
     {
-        public static void Initialize(this CrossFit.Context context, Action<PlatformServiceRegistry> registrations)
+        public static void Initialize(this PlatformContext context, Action<PlatformServiceRegistry> registrations)
         {
             var registry = context.ServiceRegistry;
 

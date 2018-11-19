@@ -16,7 +16,7 @@ namespace Sample.iOS
         {
             base.ViewDidLoad();
 
-            CrossFit.Shared.Initialize(null);
+            PlatformContext.Shared.Initialize(null);
             this.ViewModel = new ViewModel();
 
             // Perform any additional setup after loading the view, typically from a nib.

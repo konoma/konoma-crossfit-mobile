@@ -28,6 +28,6 @@ namespace Konoma.CrossFit
 
     public static class DeviceInfoContextExtensions
     {
-        public static IDeviceInfo GetDeviceInfo(this CrossFit.Context context) => context.GetService<IDeviceInfo>();
+        public static IDeviceInfo GetDeviceInfo(this CrossFit.PlatformContext context) => context.GetService<IDeviceInfo>();
     }
 }

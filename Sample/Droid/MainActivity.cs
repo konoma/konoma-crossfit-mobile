@@ -16,7 +16,7 @@ namespace Sample.Droid
         {
             base.OnCreate(savedInstanceState);
 
-            CrossFit.Shared.Initialize(null);
+            PlatformContext.Shared.Initialize(null);
 
             this.ViewModel = new ViewModel();
 
