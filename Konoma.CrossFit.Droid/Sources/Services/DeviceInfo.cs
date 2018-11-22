@@ -1,5 +1,6 @@
 ﻿
 using System;
+using Android.OS;
 
 namespace Konoma.CrossFit
 {
@@ -9,7 +10,8 @@ namespace Konoma.CrossFit
 
         public DeviceInfo()
         {
-            this.PlatformVersion = new Version((int)Android.OS.Build.VERSION.SdkInt, 0);
+            this.PlatformVersion = new Version((int)Build.VERSION.SdkInt, 0);
+            this.PhysicalDevice = !(Build.Fingerprint.Contains("vbox") || Build.Fingerprint.Contains("generic"));
         }
 
         #endregion
@@ -17,8 +19,8 @@ namespace Konoma.CrossFit
         #region Device Info
 
         public DevicePlatform Platform { get; } = DevicePlatform.Android;
-
         public Version PlatformVersion { get; }
+        public bool PhysicalDevice { get; }
 
         #endregion
     }

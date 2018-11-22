@@ -13,6 +13,7 @@ namespace Konoma.CrossFit
         public DeviceInfo(UIDevice device)
         {
             this.PlatformVersion = new Version(device.SystemVersion);
+            this.PhysicalDevice = ObjCRuntime.Runtime.Arch == ObjCRuntime.Arch.DEVICE;
         }
 
         #endregion
@@ -20,8 +21,8 @@ namespace Konoma.CrossFit
         #region Device Info
 
         public DevicePlatform Platform { get; } = DevicePlatform.iOS;
-
         public Version PlatformVersion { get; }
+        public bool PhysicalDevice { get; }
 
         #endregion
     }

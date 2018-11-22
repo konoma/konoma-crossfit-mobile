@@ -7,6 +7,7 @@ namespace Konoma.CrossFit
     {
         DevicePlatform Platform { get; }
         Version PlatformVersion { get; }
+        bool PhysicalDevice { get; }
     }
 
     public enum DevicePlatform
@@ -28,6 +29,6 @@ namespace Konoma.CrossFit
 
     public static class DeviceInfoContextExtensions
     {
-        public static IDeviceInfo GetDeviceInfo(this CrossFit.PlatformContext context) => context.GetService<IDeviceInfo>();
+        public static IDeviceInfo GetDeviceInfo(this PlatformContext context) => context.GetService<IDeviceInfo>();
     }
 }
