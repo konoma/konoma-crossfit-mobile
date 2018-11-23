@@ -52,12 +52,13 @@
   <ItemGroup>
     <Folder Include="Sources\" />
     <Folder Include="Sources\Services\" />
+    <Folder Include="Sources\Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sources\PlatformContext.cs" />
-    <Compile Include="Sources\Services\DeviceInfo.cs" />
-    <Compile Include="Sources\Services\Threading.cs" />
+    <Compile Include="Sources\Utilities\DeviceInfo.cs" />
+    <Compile Include="Sources\Utilities\Threading.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Konoma.CrossFit\Konoma.CrossFit.csproj">

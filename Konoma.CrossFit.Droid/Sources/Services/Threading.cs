@@ -1,15 +1,16 @@
-﻿using System;
+﻿
+using System;
 using Android.OS;
 
 namespace Konoma.CrossFit
 {
-    public class Threading : IThreading
+    public class ThreadingProvider : IThreadingProvider
     {
         #region Initialization
 
-        public Threading() : this(new Handler(Looper.MainLooper)) { }
+        public ThreadingProvider() : this(new Handler(Looper.MainLooper)) { }
 
-        public Threading(Handler handler)
+        public ThreadingProvider(Handler handler)
         {
             this.Handler = handler;
         }

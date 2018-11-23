@@ -4,24 +4,15 @@ using Android.OS;
 
 namespace Konoma.CrossFit
 {
-    public class DeviceInfo : IDeviceInfo
+    public class DeviceInfoProvider : IDeviceInfoProvider
     {
-        #region Initialization
-
-        public DeviceInfo()
+        public DeviceInfo GetDeviceInfo()
         {
-            this.PlatformVersion = new Version((int)Build.VERSION.SdkInt, 0);
-            this.PhysicalDevice = !(Build.Fingerprint.Contains("vbox") || Build.Fingerprint.Contains("generic"));
+            return new DeviceInfo(
+                platform: DevicePlatform.Android,
+                platformVersion: new Version((int)Build.VERSION.SdkInt, 0),
+                physicalDevice: !(Build.Fingerprint.Contains("vbox") || Build.Fingerprint.Contains("generic"))
+            );
         }
-
-        #endregion
-
-        #region Device Info
-
-        public DevicePlatform Platform { get; } = DevicePlatform.Android;
-        public Version PlatformVersion { get; }
-        public bool PhysicalDevice { get; }
-
-        #endregion
     }
 }

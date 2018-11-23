@@ -1,11 +1,11 @@
 ﻿
 using System;
-using Foundation;
 using CoreFoundation;
+using Foundation;
 
 namespace Konoma.CrossFit
 {
-    public class Threading : IThreading
+    public class ThreadingProvider : IThreadingProvider
     {
         #region Threading
 
