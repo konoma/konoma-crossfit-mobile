@@ -4,6 +4,9 @@ pool:
 # also sets the name of the package
 name: 0.1$(rev:.r)
 
+trigger:
+  - master
+
 variables:
   buildConfiguration: 'Release'
   libraryName: 'Konoma.CrossFit'
