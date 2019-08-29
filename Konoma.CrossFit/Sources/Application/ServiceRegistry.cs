@@ -1,13 +1,28 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Konoma.CrossFit
 {
-    public class PlatformServiceRegistry
+    public delegate T ServiceLoader<T>();
+
+    public interface IServiceProvider
     {
-        public delegate T ServiceProvider<T>();
+        T Get<T>();
+    }
+
+    public interface IServiceRegistry : IServiceProvider
+    {
+        void RegisterStatic<T>(ServiceLoader<T> loader);
+        void RegisterEphemeral<T>(ServiceLoader<T> loader);
+    }
+
+    internal sealed class ServiceRegistry : IServiceRegistry, IServiceProvider
+    {
+        #region Helper Types
+
         private delegate object AnyServiceProvider();
+
+        #endregion
 
         #region State
 
@@ -20,18 +35,18 @@ namespace Konoma.CrossFit
 
         #region Registration
 
-        public void RegisterService<T>(ServiceProvider<T> provider)
+        public void RegisterStaticService<T>(ServiceLoader<T> loader)
         {
             this.CheckAlreadyRegistered(typeof(T));
 
-            this.RegisteredStaticServices[typeof(T)] = () => provider();
+            this.RegisteredStaticServices[typeof(T)] = () => loader();
         }
 
-        public void RegisterEphemeralService<T>(ServiceProvider<T> provider)
+        public void RegisterEphemeralService<T>(ServiceLoader<T> loader)
         {
             this.CheckAlreadyRegistered(typeof(T));
 
-            this.RegisteredEphemeralServices[typeof(T)] = () => provider();
+            this.RegisteredEphemeralServices[typeof(T)] = () => loader();
         }
 
         private void CheckAlreadyRegistered(Type type)
@@ -103,6 +118,15 @@ namespace Konoma.CrossFit
                 this.InstantiatingEphemeralServices.Remove(type);
             }
         }
+
+        #endregion
+
+        #region IServiceProvider and IServiceRegistry
+
+        T IServiceProvider.Get<T>() => this.GetService<T>();
+
+        void IServiceRegistry.RegisterStatic<T>(ServiceLoader<T> loader) => this.RegisterStaticService(loader);
+        void IServiceRegistry.RegisterEphemeral<T>(ServiceLoader<T> loader) => this.RegisterEphemeralService(loader);
 
         #endregion
     }
