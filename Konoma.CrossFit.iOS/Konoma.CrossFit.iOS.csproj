@@ -53,14 +53,15 @@
     <Folder Include="Sources\" />
     <Folder Include="Sources\Services\" />
     <Folder Include="Sources\Application\" />
+    <Folder Include="Sources\Application\ScreenTypes\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sources\Application\ISceneScreenViewController.cs" />
     <Compile Include="Sources\Application\Navigator.cs" />
     <Compile Include="Sources\Application\Scenes.cs" />
-    <Compile Include="Sources\Application\SceneScreenTabBarController.cs" />
-    <Compile Include="Sources\Application\SceneScreenViewController.cs" />
+    <Compile Include="Sources\Application\ScreenTypes\ISceneScreenViewController.cs" />
+    <Compile Include="Sources\Application\ScreenTypes\SceneScreenTabBarController.cs" />
+    <Compile Include="Sources\Application\ScreenTypes\SceneScreenViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Konoma.CrossFit\Konoma.CrossFit.csproj">

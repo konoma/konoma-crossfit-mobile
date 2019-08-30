@@ -145,9 +145,6 @@
     <Compile Include="Sources\Application\ScreenTypes\SceneScreenFragment.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Konoma.CrossFit\Konoma.CrossFit.csproj">
       <Project>{590B47EE-0716-4492-B806-ED3AAD8A15EC}</Project>
       <Name>Konoma.CrossFit</Name>
