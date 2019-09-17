@@ -2538,9 +2538,6 @@ namespace Konoma.CrossFit
 			// aapt resource value: 0x7f05001a
 			public static int abc_toolbar_collapse_description = 2131034138;
 			
-			// aapt resource value: 0x7f050029
-			public static int library_name = 2131034153;
-			
 			// aapt resource value: 0x7f05001b
 			public static int search_menu_title = 2131034139;
 			
