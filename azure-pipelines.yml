@@ -2,7 +2,7 @@ pool:
   vmImage: 'macOS-10.14'
 
 # also sets the name of the package
-name: 0.1$(rev:.r)
+name: 0.2$(rev:.r)
 
 trigger:
   - master
@@ -10,36 +10,39 @@ trigger:
 variables:
   buildConfiguration: 'Release'
   libraryName: 'Konoma.CrossFit'
+  feedName: 'Libraries'
 
 steps:
+  - task: NuGetToolInstaller@0
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: restore
+  - task: NuGetCommand@2
+    inputs:
+      restoreSolution: '**/*.sln'
+      feedsToUse: select
+      vstsFeed: $(feedName)
 
-- script: msbuild $(libraryName)/$(libraryName).csproj /property:Configuration=$(buildConfiguration)
-  displayName: 'Build umbrella'
+  - script: msbuild $(libraryName)/$(libraryName).csproj /property:Configuration=$(buildConfiguration)
+    displayName: 'Build umbrella'
 
-- script: msbuild $(libraryName).Droid/$(libraryName).Droid.csproj /property:Configuration=$(buildConfiguration)
-  displayName: 'Build Android'
+  - script: msbuild $(libraryName).Droid/$(libraryName).Droid.csproj /property:Configuration=$(buildConfiguration)
+    displayName: 'Build Android'
 
-- script: msbuild $(libraryName).iOS/$(libraryName).iOS.csproj /property:Configuration=$(buildConfiguration)
-  displayName: 'Build iOS'
+  - script: msbuild $(libraryName).iOS/$(libraryName).iOS.csproj /property:Configuration=$(buildConfiguration)
+    displayName: 'Build iOS'
 
-- task: NuGetCommand@2
-  displayName: 'Pack NuGet package'
-  inputs:
-    command: pack
-    configuration: $(buildConfiguration)
-    packagesToPack: $(libraryName).nuspec
-    versioningScheme: byBuildNumber
-  condition: succeeded()
+  - task: NuGetCommand@2
+    displayName: 'Pack NuGet package'
+    inputs:
+      command: pack
+      configuration: $(buildConfiguration)
+      packagesToPack: $(libraryName).nuspec
+      versioningScheme: byBuildNumber
+    condition: succeeded()
 
-- task: NuGetCommand@2
-  displayName: 'Publish NuGet package'
-  inputs:
-    command: push
-    publishVstsFeed: 'Libraries'
-    allowPackageConflicts: true
-  condition: succeeded()
-
+  - task: NuGetCommand@2
+    displayName: 'Publish NuGet package'
+    inputs:
+      command: push
+      publishVstsFeed: 'Libraries'
+      allowPackageConflicts: true
+    condition: succeeded()
