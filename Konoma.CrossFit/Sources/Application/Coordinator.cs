@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Konoma.CrossFit
 {
@@ -10,6 +11,13 @@ namespace Konoma.CrossFit
         {
             var coordinator = new Coordinator();
             setup(new CoordinatorSetup(coordinator.ServiceRegistry));
+            return coordinator;
+        }
+
+        public static async Task<Coordinator> CreateAsync(Func<CoordinatorSetup, Task> setup)
+        {
+            var coordinator = new Coordinator();
+            await setup(new CoordinatorSetup(coordinator.ServiceRegistry));
             return coordinator;
         }
 
