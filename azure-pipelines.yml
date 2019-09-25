@@ -17,12 +17,12 @@ steps:
   inputs:
     command: restore
 
-- displayName: 'Build library'
-  script: |
+- script: |
     dotnet restore
     msbuild $(libraryName)/$(libraryName).csproj /property:Configuration=$(buildConfiguration)
     msbuild $(libraryName).Droid/$(libraryName).Droid.csproj /property:Configuration=$(buildConfiguration)
     msbuild $(libraryName).iOS/$(libraryName).iOS.csproj /property:Configuration=$(buildConfiguration)
+  displayName: 'Build umbrella'
 
 - task: NuGetCommand@2
   displayName: 'Pack NuGet package'
