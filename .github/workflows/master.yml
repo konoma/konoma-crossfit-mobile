@@ -7,7 +7,7 @@ on:
 
 env:
   LIBRARY_NAME: Konoma.CrossFit
-  NUGET_PASSWORD: ${{ secrets.GHPackagesToken }}
+  NUGET_PASSWORD: ${{ secrets.KonomaPat }}
 
 jobs:
   build:
