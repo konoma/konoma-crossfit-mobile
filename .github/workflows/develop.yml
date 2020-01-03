@@ -1,0 +1,39 @@
+name: Build Develop
+
+on:
+  push:
+    branches:
+      - develop
+
+env:
+  LIBRARY_NAME: Konoma.Basics
+  NUGET_PASSWORD: ${{ secrets.GHPackagesToken }}
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v2
+      
+      - name: Checkout Build Scripts
+        uses: actions/checkout@v2
+        with:
+          repository: konoma/actions-buildscripts
+          token: ${{ secrets.GHPackagesToken }}
+          path: .build
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.100
+
+      - name: Build library
+        run: |
+          .build/xamarin-library/build.sh
+
+      - name: Publish Library
+        run: |
+          BUILD_DATE="$(date +"%Y%m%d%H%M%S")"
+          VERSION_SUFFIX="dev-$BUILD_DATE" .build/xamarin-library/publish.sh
