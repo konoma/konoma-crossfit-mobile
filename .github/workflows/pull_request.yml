@@ -3,7 +3,7 @@ name: Build Pull Request
 on: pull_request
 
 env:
-  LIBRARY_NAME: Konoma.Basics
+  LIBRARY_NAME: Konoma.CrossFit
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: konoma/actions-buildscripts
-          token: ${{ secrets.GHPackagesToken }}
+          token: ${{ secrets.KonomaPat }}
           path: .build
 
       - name: Setup .NET Core

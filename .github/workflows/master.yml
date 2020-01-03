@@ -6,8 +6,8 @@ on:
       - master
 
 env:
-  LIBRARY_NAME: Konoma.Basics
-  NUGET_PASSWORD: ${{ secrets.GHPackagesToken }}
+  LIBRARY_NAME: Konoma.CrossFit
+  NUGET_PASSWORD: ${{ secrets.KonomaPat }}
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: konoma/actions-buildscripts
-          token: ${{ secrets.GHPackagesToken }}
+          token: ${{ secrets.KonomaPat }}
           path: .build
 
       - name: Setup .NET Core
