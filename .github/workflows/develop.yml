@@ -6,7 +6,7 @@ on:
       - develop
 
 env:
-  LIBRARY_NAME: Konoma.Basics
+  LIBRARY_NAME: Konoma.CrossFit
   NUGET_PASSWORD: ${{ secrets.GHPackagesToken }}
 
 jobs:
