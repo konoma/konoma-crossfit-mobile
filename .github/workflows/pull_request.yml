@@ -1,0 +1,30 @@
+name: Build Pull Request
+
+on: pull_request
+
+env:
+  LIBRARY_NAME: Konoma.Basics
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v2
+    
+      - name: Checkout Build Scripts
+        uses: actions/checkout@v2
+        with:
+          repository: konoma/actions-buildscripts
+          token: ${{ secrets.GHPackagesToken }}
+          path: .build
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.100
+
+      - name: Build library
+        run: |
+          .build/xamarin-library/build.sh
