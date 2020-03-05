@@ -10,7 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1A1BD4F8-4409-404B-9ADB-BAB90E978F48}"
 	ProjectSection(SolutionItems) = preProject
 		Konoma.CrossFit.nuspec = Konoma.CrossFit.nuspec
-		azure-pipelines.yml = azure-pipelines.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -64,6 +63,7 @@ Global
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
+		version = 0.4
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
