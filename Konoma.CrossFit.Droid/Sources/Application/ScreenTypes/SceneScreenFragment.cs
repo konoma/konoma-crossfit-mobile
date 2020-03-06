@@ -1,4 +1,5 @@
 ﻿using Android.OS;
+using AndroidX.AppCompat.App;
 using AndroidX.Fragment.App;
 
 namespace Konoma.CrossFit
@@ -6,6 +7,8 @@ namespace Konoma.CrossFit
     public abstract class SceneScreenFragment<TScene> : Fragment, ISceneScreen where TScene : Scene
     {
         protected TScene Scene { get; private set; }
+
+        protected AppCompatActivity AppCompatActivity => (AppCompatActivity)this.Activity;
 
         internal void SetScene(TScene scene)
         {
