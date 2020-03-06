@@ -10,6 +10,5 @@
     <Folder Include="Sources\" />
     <Folder Include="Properties\" />
     <Folder Include="Sources\Application\" />
-    <Folder Include="Sources\Utilities\" />
   </ItemGroup>
 </Project>
