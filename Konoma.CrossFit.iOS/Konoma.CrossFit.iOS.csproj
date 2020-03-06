@@ -52,9 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Sources\" />
-    <Folder Include="Sources\Services\" />
     <Folder Include="Sources\Application\" />
     <Folder Include="Sources\Application\ScreenTypes\" />
+    <Folder Include="Sources\Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,8 +63,7 @@
     <Compile Include="Sources\Application\ScreenTypes\ISceneScreenViewController.cs" />
     <Compile Include="Sources\Application\ScreenTypes\SceneScreenTabBarController.cs" />
     <Compile Include="Sources\Application\ScreenTypes\SceneScreenViewController.cs" />
-    <Compile Include="Sources\Services\DeviceInformationService.cs" />
-    <Compile Include="Sources\Services\StandardServices.cs" />
+    <Compile Include="Sources\Utilities\DeviceInformation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Konoma.CrossFit\Konoma.CrossFit.csproj">

@@ -5,17 +5,17 @@ using Android.Util;
 
 namespace Konoma.CrossFit
 {
-    public class DeviceInformationService : IDeviceInformationService
+    public static class DeviceInformation
     {
+        public static DeviceType DeviceType => DeviceType.Physical;
+
+        public static DevicePlatform DevicePlatform => DevicePlatform.Android;
+
+        public static DeviceIdiom DeviceIdiom => _DeviceIdiom.Value;
+
         private const int MinimumWidthForTablet = 600;
 
-        public DevicePlatform Platform => DevicePlatform.Android;
-
-        public DeviceIdiom Idiom => this._Idiom.Value;
-
-        private Lazy<DeviceIdiom> _Idiom = new Lazy<DeviceIdiom>(LookupDeviceIdiom);
-
-        private static DeviceIdiom LookupDeviceIdiom()
+        private static readonly Lazy<DeviceIdiom> _DeviceIdiom = new Lazy<DeviceIdiom>(() =>
         {
             if (Application.Context.Resources?.Configuration is Configuration configuration)
             {
@@ -32,6 +32,6 @@ namespace Konoma.CrossFit
             }
 
             return DeviceIdiom.Unknown;
-        }
+        });
     }
 }
