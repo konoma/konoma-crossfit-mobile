@@ -3,12 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>Latest</LangVersion>
+    <ReleaseVersion>0.4</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Sources\" />
     <Folder Include="Properties\" />
-    <Folder Include="Sources\Services\" />
     <Folder Include="Sources\Application\" />
   </ItemGroup>
 </Project>
