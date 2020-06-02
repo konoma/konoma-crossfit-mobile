@@ -10,9 +10,11 @@
         <repository type="git" url="https://github.com/konoma/konoma-crossfit-mobile.git" />
 
         <dependencies>
-            <group targetFramework="monoandroid81">
+            <group targetFramework="netstandard2.0" />
+            <group targetFramework="monoandroid90">
                 <dependency id="Xamarin.AndroidX.AppCompat" version="1.1.0" />
             </group>
+            <group targetFramework="xamarinios10" />
         </dependencies>
     </metadata>
     <files>
