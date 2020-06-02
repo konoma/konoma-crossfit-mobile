@@ -5,9 +5,9 @@
         <version>0.5.0</version>
         <authors>Konoma</authors>
         <owners>Konoma</owners>
-        <projectUrl>http://github.com/konoma/xamarin-crossfit</projectUrl>
+        <projectUrl>http://github.com/konoma/konoma-crossfit-mobile</projectUrl>
         <description>A library to support development for Android/iOS cross-platform apps.</description>
-        <repository type="git" url="https://github.com/konoma/xamarin-crossfit.git" />
+        <repository type="git" url="https://github.com/konoma/konoma-crossfit-mobile.git" />
 
         <dependencies>
             <group targetFramework="monoandroid81">
