@@ -130,6 +130,7 @@
     <Compile Include="Sources\Application\ScreenTypes\SceneScreenActivity.cs" />
     <Compile Include="Sources\Application\ScreenTypes\SceneScreenAppCompatActivity.cs" />
     <Compile Include="Sources\Application\ScreenTypes\SceneScreenFragment.cs" />
+    <Compile Include="Sources\Values\RgbColorValue.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Konoma.CrossFit\Konoma.CrossFit.csproj">
@@ -141,6 +142,7 @@
     <Folder Include="Sources\" />
     <Folder Include="Sources\Application\" />
     <Folder Include="Sources\Application\ScreenTypes\" />
+    <Folder Include="Sources\Values\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
