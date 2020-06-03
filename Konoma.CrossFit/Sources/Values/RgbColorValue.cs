@@ -1,4 +1,7 @@
-﻿namespace Konoma.CrossFit
+﻿using System;
+using System.Globalization;
+
+namespace Konoma.CrossFit
 {
     /// <summary>
     /// A platform agnostic way to represent an RGB color value with an alpha component.
@@ -28,6 +31,35 @@
             }
 
             return new RgbColorValue(red: r, green: g, blue: b, alpha: a);
+        }
+
+        public static RgbColorValue ParseString(string hexString) => TryParseString(hexString, out var result)
+            ? result
+            : throw new ArgumentException(
+                message: "Hex string must be in the format #xxxxxx or xxxxxx where x is a hex digit",
+                paramName: nameof(hexString));
+
+        public static bool TryParseString(string hexString, out RgbColorValue result)
+        {
+            if (hexString.StartsWith("#"))
+            {
+                hexString = hexString.Substring(1);
+            }
+
+            if (hexString.Length != 6)
+            {
+                result = default;
+                return false;
+            }
+
+            if (!int.TryParse(hexString, NumberStyles.HexNumber, null, out var rgbInt))
+            {
+                result = default;
+                return false;
+            }
+
+            result = FromArgb(rgbInt);
+            return true;
         }
 
         public RgbColorValue(byte red, byte green, byte blue, byte alpha)
