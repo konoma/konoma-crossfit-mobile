@@ -33,6 +33,14 @@ namespace Konoma.CrossFit
             return new RgbColorValue(red: r, green: g, blue: b, alpha: a);
         }
 
+        /// <summary>
+        /// Parse a string in the format <c>#xxxxxx</c> or <c>xxxxxx</c> where <c>x</c> is a hex digit.
+        /// </summary>
+        /// <remarks>
+        /// Alpha values are not supported.
+        /// </remarks>
+        /// <param name="hexString">A hex string that represents an RGB color.</param>
+        /// <returns></returns>
         public static RgbColorValue ParseString(string hexString) => TryParseString(hexString, out var result)
             ? result
             : throw new ArgumentException(
