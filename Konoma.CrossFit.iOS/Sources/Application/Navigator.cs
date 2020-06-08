@@ -28,5 +28,16 @@ namespace Konoma.CrossFit
                 parentController.PresentViewController(controller, true, null)
             );
         }
+
+        public static void NavigateRoot<TScene, TSceneScreen>(UIWindow window, TScene scene, TSceneScreen screen, Func<TSceneScreen, UIViewController>? wrapper = default)
+            where TScene : Scene
+            where TSceneScreen : UIViewController, ISceneScreen, ISceneScreenViewController<TScene>
+        {
+            Scenes.Setup(scene, screen);
+
+            var controller = wrapper != null ? wrapper(screen) : screen;
+
+            window.RootViewController = controller;
+        }
     }
 }
