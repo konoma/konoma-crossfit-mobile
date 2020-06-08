@@ -22,7 +22,7 @@ namespace Konoma.CrossFit
 
         void ISceneScreenViewController<TScene>.SceneConnected() { }
 
-        protected TScene Scene { get; private set; }
+        protected TScene Scene { get; private set; } = null!;
 
         #endregion
     }

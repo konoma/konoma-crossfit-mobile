@@ -5,7 +5,7 @@ namespace Konoma.CrossFit
 {
     public abstract class SceneScreenAppCompatActivity<TScene> : AppCompatActivity, ISceneScreen where TScene : Scene
     {
-        protected TScene Scene { get; private set; }
+        protected TScene Scene { get; private set; } = null!;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Android.Content;
 using Android.OS;
 
@@ -7,19 +8,24 @@ namespace Konoma.CrossFit
     public static class Scenes
     {
         private static readonly IDictionary<string, Scene> PersistedScenes = new Dictionary<string, Scene>();
-        private static string IdentifierKey = "Konoma.Modular::SceneIdentifier";
+        private const string IdentifierKey = "Konoma.Modular::SceneIdentifier";
 
         public static TScene Get<TScene>(
             ISceneScreen screen,
             Bundle savedInstanceState,
-            Intent intent,
-            string launchId = null
+            Intent? intent,
+            string? launchId = null
         )
             where TScene : Scene
         {
             var scene = Retrieve<TScene>(savedInstanceState?.GetString(IdentifierKey))
                 ?? Retrieve<TScene>(intent?.GetStringExtra(IdentifierKey))
                 ?? Retrieve<TScene>(GetLaunchKey(typeof(TScene), launchId));
+
+            if (scene == null)
+            {
+                throw new InvalidOperationException("Unable to retrieve scene");
+            }
 
             scene.Connect(screen);
             return scene;
@@ -37,7 +43,7 @@ namespace Konoma.CrossFit
             return screen;
         }
 
-        private static TScene Retrieve<TScene>(string key) where TScene : Scene
+        private static TScene? Retrieve<TScene>(string? key) where TScene : Scene
         {
             if (key == null) { return null; }
 
@@ -46,7 +52,7 @@ namespace Konoma.CrossFit
             return scene;
         }
 
-        public static void Persist(Scene scene, Bundle savedInstanceState)
+        public static void Persist(Scene scene, Bundle? savedInstanceState)
         {
             if (savedInstanceState == null) { return; }
 
@@ -60,7 +66,7 @@ namespace Konoma.CrossFit
             intent.PutExtra(IdentifierKey, scene.Identifier);
         }
 
-        public static void PersistLaunchScene<TScene>(TScene scene, string id = null) where TScene : Scene
+        public static void PersistLaunchScene<TScene>(TScene scene, string? id = null) where TScene : Scene
         {
             PersistedScenes[GetLaunchKey(typeof(TScene), id)] = scene;
         }
@@ -70,6 +76,6 @@ namespace Konoma.CrossFit
             PersistedScenes.Remove(scene.Identifier);
         }
 
-        private static string GetLaunchKey(System.Type sceneType, string id) => $"LaunchScene-{sceneType.FullName}-{id ?? ""}";
+        private static string GetLaunchKey(System.Type sceneType, string? id) => $"LaunchScene-{sceneType.FullName}-{id ?? ""}";
     }
 }

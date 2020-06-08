@@ -26,7 +26,7 @@ namespace Konoma.CrossFit
             this.TryConfigureView();
         }
 
-        protected TScene Scene { get; private set; }
+        protected TScene Scene { get; private set; } = null!;
         private bool IsInitialized;
 
         // ViewDidLoad is called directly in the superclass constructor, therefore this is dangerous to override

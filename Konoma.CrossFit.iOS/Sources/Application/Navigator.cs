@@ -14,7 +14,7 @@ namespace Konoma.CrossFit
             navigationController.PushViewController(Scenes.Setup(scene, screen), true);
         }
 
-        public static void NavigateModal<TScene, TSceneScreen>(UIViewController parentController, TScene scene, TSceneScreen screen, Func<TSceneScreen, UIViewController> wrapper = null)
+        public static void NavigateModal<TScene, TSceneScreen>(UIViewController parentController, TScene scene, TSceneScreen screen, Func<TSceneScreen, UIViewController>? wrapper = default)
             where TScene : Scene
             where TSceneScreen : UIViewController, ISceneScreen, ISceneScreenViewController<TScene>
         {
