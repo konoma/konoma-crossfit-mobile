@@ -14,4 +14,7 @@
     <ItemGroup>
         <ProjectReference Include="..\Konoma.CrossFit\Konoma.CrossFit.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Konoma.Basics" Version="1.1.0" />
+    </ItemGroup>
 </Project>

@@ -13,6 +13,8 @@ namespace Sample.Droid
         {
             base.OnCreate(savedInstanceState);
 
+            Konoma.Basics.Log.Logger = new Konoma.Basics.AndroidLogger("CrossFit.Sample");
+
             var app = SampleApp.Setup(setup =>
             {
                 // Add platform dependencies here

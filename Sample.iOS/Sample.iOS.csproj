@@ -16,6 +16,7 @@
         <ProvisioningType>automatic</ProvisioningType>
         <LangVersion>8.0</LangVersion>
         <Nullable>enable</Nullable>
+        <ReleaseVersion>0.5</ReleaseVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
         <DebugSymbols>true</DebugSymbols>
@@ -118,6 +119,7 @@
         <Folder Include="Sources\" />
         <Folder Include="Sources\Scenes\" />
         <Folder Include="Sources\Scenes\Main\" />
+        <Folder Include="Sources\Common\" />
     </ItemGroup>
     <ItemGroup>
         <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -131,6 +133,8 @@
         <Compile Include="Sources\Main.cs" />
         <Compile Include="Sources\SceneDelegate.cs" />
         <Compile Include="Sources\Scenes\Main\MainViewController.cs" />
+        <Compile Include="Sources\Common\PrimaryButton.cs" />
+        <Compile Include="Sources\Common\Spacer.cs" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Konoma.CrossFit.iOS\Konoma.CrossFit.iOS.csproj">
@@ -145,6 +149,14 @@
             <Project>{590B47EE-0716-4492-B806-ED3AAD8A15EC}</Project>
             <Name>Konoma.CrossFit</Name>
         </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Konoma.Ui">
+        <Version>0.1.0-dev-20200608131136</Version>
+      </PackageReference>
+      <PackageReference Include="Konoma.Basics">
+        <Version>1.1.0</Version>
+      </PackageReference>
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
