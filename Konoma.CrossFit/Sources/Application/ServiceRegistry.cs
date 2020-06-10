@@ -27,7 +27,7 @@ namespace Konoma.CrossFit
         #region State
 
         private readonly ISet<Type> InstantiatingEphemeralServices = new HashSet<Type>();
-        private readonly IDictionary<Type, object> InstantiatedStaticServices = new Dictionary<Type, object>();
+        private readonly IDictionary<Type, object?> InstantiatedStaticServices = new Dictionary<Type, object?>();
         private readonly IDictionary<Type, AnyServiceProvider> RegisteredEphemeralServices = new Dictionary<Type, AnyServiceProvider>();
         private readonly IDictionary<Type, AnyServiceProvider> RegisteredStaticServices = new Dictionary<Type, AnyServiceProvider>();
 
@@ -39,19 +39,21 @@ namespace Konoma.CrossFit
         {
             this.CheckAlreadyRegistered(typeof(T));
 
-            this.RegisteredStaticServices[typeof(T)] = () => loader();
+            this.RegisteredStaticServices[typeof(T)] = () => loader()!;
         }
 
         public void RegisterEphemeralService<T>(ServiceLoader<T> loader)
         {
             this.CheckAlreadyRegistered(typeof(T));
 
-            this.RegisteredEphemeralServices[typeof(T)] = () => loader();
+            this.RegisteredEphemeralServices[typeof(T)] = () => loader()!;
         }
 
         private void CheckAlreadyRegistered(Type type)
         {
-            if (this.InstantiatedStaticServices.ContainsKey(type) || this.RegisteredStaticServices.ContainsKey(type) || this.RegisteredEphemeralServices.ContainsKey(type))
+            if (this.InstantiatedStaticServices.ContainsKey(type) ||
+                this.RegisteredStaticServices.ContainsKey(type) ||
+                this.RegisteredEphemeralServices.ContainsKey(type))
             {
                 throw new InvalidOperationException($"Service {type} was already registered");
             }
@@ -71,12 +73,10 @@ namespace Konoma.CrossFit
             );
         }
 
-        private object GetInstantiatedService(Type type)
-        {
-            return this.InstantiatedStaticServices.TryGetValue(type, out object service) ? service : null;
-        }
+        private object? GetInstantiatedService(Type type)
+            => this.InstantiatedStaticServices.TryGetValue(type, out var service) ? service : null;
 
-        private object InstantiateStaticService(Type type)
+        private object? InstantiateStaticService(Type type)
         {
             if (this.InstantiatedStaticServices.ContainsKey(type))
             {
@@ -96,7 +96,7 @@ namespace Konoma.CrossFit
             return service;
         }
 
-        private object InstantiateEphemeralService(Type type)
+        private object? InstantiateEphemeralService(Type type)
         {
             if (this.InstantiatingEphemeralServices.Contains(type))
             {

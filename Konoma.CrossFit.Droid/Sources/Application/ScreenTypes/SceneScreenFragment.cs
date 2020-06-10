@@ -6,7 +6,7 @@ namespace Konoma.CrossFit
 {
     public abstract class SceneScreenFragment<TScene> : Fragment, ISceneScreen where TScene : Scene
     {
-        protected TScene Scene { get; private set; }
+        protected TScene Scene { get; private set; } = null!;
 
         protected AppCompatActivity AppCompatActivity => (AppCompatActivity)this.Activity;
 

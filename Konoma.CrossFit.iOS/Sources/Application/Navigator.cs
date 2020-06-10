@@ -14,7 +14,7 @@ namespace Konoma.CrossFit
             navigationController.PushViewController(Scenes.Setup(scene, screen), true);
         }
 
-        public static void NavigateModal<TScene, TSceneScreen>(UIViewController parentController, TScene scene, TSceneScreen screen, Func<TSceneScreen, UIViewController> wrapper = null)
+        public static void NavigateModal<TScene, TSceneScreen>(UIViewController parentController, TScene scene, TSceneScreen screen, Func<TSceneScreen, UIViewController>? wrapper = default)
             where TScene : Scene
             where TSceneScreen : UIViewController, ISceneScreen, ISceneScreenViewController<TScene>
         {
@@ -27,6 +27,17 @@ namespace Konoma.CrossFit
             DispatchQueue.MainQueue.DispatchAsync(() =>
                 parentController.PresentViewController(controller, true, null)
             );
+        }
+
+        public static void NavigateRoot<TScene, TSceneScreen>(UIWindow window, TScene scene, TSceneScreen screen, Func<TSceneScreen, UIViewController>? wrapper = default)
+            where TScene : Scene
+            where TSceneScreen : UIViewController, ISceneScreen, ISceneScreenViewController<TScene>
+        {
+            Scenes.Setup(scene, screen);
+
+            var controller = wrapper != null ? wrapper(screen) : screen;
+
+            window.RootViewController = controller;
         }
     }
 }

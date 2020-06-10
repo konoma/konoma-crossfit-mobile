@@ -26,8 +26,11 @@ namespace Konoma.CrossFit
             this.Connected();
         }
 
-        private WeakReference<TSceneScreen> _Screen;
-        protected TSceneScreen Screen => this._Screen.TryGetTarget(out var screen) ? screen : null;
+        private WeakReference<TSceneScreen> _Screen = null!;
+
+        protected TSceneScreen Screen => this._Screen.TryGetTarget(out var screen)
+            ? screen
+            : throw new InvalidOperationException("Tried to read scene after it's not available anymore");
 
         protected abstract void Connected();
     }
