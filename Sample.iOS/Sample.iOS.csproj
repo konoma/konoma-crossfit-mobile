@@ -120,6 +120,7 @@
         <Folder Include="Sources\Scenes\" />
         <Folder Include="Sources\Scenes\Main\" />
         <Folder Include="Sources\Common\" />
+        <Folder Include="Sources\Scenes\Leaf\" />
     </ItemGroup>
     <ItemGroup>
         <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -135,6 +136,7 @@
         <Compile Include="Sources\Scenes\Main\MainViewController.cs" />
         <Compile Include="Sources\Common\PrimaryButton.cs" />
         <Compile Include="Sources\Common\Spacer.cs" />
+        <Compile Include="Sources\Scenes\Leaf\LeafViewController.cs" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Konoma.CrossFit.iOS\Konoma.CrossFit.iOS.csproj">

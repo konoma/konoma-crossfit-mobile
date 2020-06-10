@@ -12,5 +12,7 @@ namespace Sample.Core
         event EventHandler? OpenModalPressed;
 
         void SetLabels(MainSceneLabels labels);
+
+        void NavigateToModal(LeafScene scene);
     }
 }

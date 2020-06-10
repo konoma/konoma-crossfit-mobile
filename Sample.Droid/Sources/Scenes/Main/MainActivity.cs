@@ -30,6 +30,12 @@ namespace Sample.Droid
 
         #endregion
 
+        #region Navigation
+
+        public void NavigateToModal(LeafScene scene) => Navigator.Navigate(this, scene, typeof(LeafActivity));
+
+        #endregion
+
         #region User Interface
 
         private Button GarbageCollectorButton = null!;

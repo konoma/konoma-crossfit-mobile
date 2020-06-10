@@ -10,6 +10,7 @@
         <Folder Include="Sources\" />
         <Folder Include="Sources\Scenes\" />
         <Folder Include="Sources\Scenes\Main\" />
+        <Folder Include="Sources\Scenes\Leaf\" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Konoma.CrossFit\Konoma.CrossFit.csproj" />

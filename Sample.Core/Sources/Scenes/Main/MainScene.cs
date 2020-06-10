@@ -41,6 +41,8 @@ namespace Sample.Core
         private void Screen_OpenModalPressed(object sender, EventArgs e)
         {
             Log.Info("Open Modal");
+
+            this.Screen.NavigateToModal(new LeafScene(this.Coordinator));
         }
 
         #endregion

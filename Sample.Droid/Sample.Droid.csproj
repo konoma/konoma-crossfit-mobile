@@ -69,6 +69,7 @@
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Sources\LaunchActivity.cs" />
         <Compile Include="Sources\Scenes\Main\MainActivity.cs" />
+        <Compile Include="Sources\Scenes\Leaf\LeafActivity.cs" />
     </ItemGroup>
     <ItemGroup>
         <None Include="Properties\AndroidManifest.xml" />
@@ -104,6 +105,10 @@
           <SubType></SubType>
           <Generator></Generator>
         </AndroidResource>
+        <AndroidResource Include="Resources\layout\leaf_activity.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Resources\drawable\" />
@@ -111,6 +116,7 @@
         <Folder Include="Sources\" />
         <Folder Include="Sources\Scenes\" />
         <Folder Include="Sources\Scenes\Main\" />
+        <Folder Include="Sources\Scenes\Leaf\" />
     </ItemGroup>
     <ItemGroup>
       <PackageReference Include="Xamarin.AndroidX.AppCompat">

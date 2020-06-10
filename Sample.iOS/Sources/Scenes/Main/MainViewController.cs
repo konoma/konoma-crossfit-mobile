@@ -28,6 +28,12 @@ namespace Sample.iOS
 
         #endregion
 
+        #region Navigation
+
+        public void NavigateToModal(LeafScene scene) => Navigator.NavigateModal(this, scene, new LeafViewController());
+
+        #endregion
+
         #region User Interface
 
         private PrimaryButton GarbageCollectorButton = null!;
