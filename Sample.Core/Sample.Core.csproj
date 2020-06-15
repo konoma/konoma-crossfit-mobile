@@ -8,9 +8,14 @@
     </PropertyGroup>
     <ItemGroup>
         <Folder Include="Sources\" />
-        <Folder Include="Properties\" />
-        <Folder Include="Sources\Application\" />
-        <Folder Include="Sources\Values\" />
-        <Folder Include="Sources\Services\" />
+        <Folder Include="Sources\Scenes\" />
+        <Folder Include="Sources\Scenes\Main\" />
+        <Folder Include="Sources\Scenes\Leaf\" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Konoma.CrossFit\Konoma.CrossFit.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Konoma.Basics" Version="1.1.0" />
     </ItemGroup>
 </Project>
