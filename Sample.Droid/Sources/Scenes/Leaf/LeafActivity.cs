@@ -2,6 +2,7 @@
 using Android.App;
 using Android.OS;
 using Android.Widget;
+using Konoma.Basics;
 using Konoma.CrossFit;
 using Sample.Core;
 
@@ -10,6 +11,22 @@ namespace Sample.Droid
     [Activity]
     public class LeafActivity : SceneScreenAppCompatActivity<LeafScene>, ILeafScreen
     {
+        #region Initialization
+
+        ~LeafActivity()
+        {
+            Log.Info("LeafActivity finalized");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+
+            Log.Info($"LeafActivity disposed (disposing: {disposing})");
+        }
+
+        #endregion
+
         #region Events
 
         public event EventHandler? Created;
