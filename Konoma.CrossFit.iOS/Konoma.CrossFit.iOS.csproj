@@ -59,6 +59,7 @@
         <Folder Include="Sources\Application\ScreenTypes\" />
         <Folder Include="Sources\Values\" />
         <Folder Include="Sources\Services\" />
+        <Folder Include="Sources\Utilities\" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +70,7 @@
         <Compile Include="Sources\Application\ScreenTypes\SceneScreenViewController.cs" />
         <Compile Include="Sources\Values\RgbColorValue.cs" />
         <Compile Include="Sources\Services\PreferencesService.cs" />
+        <Compile Include="Sources\Utilities\WeakSelf.cs" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Konoma.CrossFit\Konoma.CrossFit.csproj">
