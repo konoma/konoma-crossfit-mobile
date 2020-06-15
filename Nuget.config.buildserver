@@ -7,7 +7,7 @@
     <packageSourceCredentials>
         <konoma>
             <add key="Username" value="konoma-ci" />
-            <add key="ClearTextPassword" value="%KONOMAPAT%" />
+            <add key="ClearTextPassword" value="%NUGET_PASSWORD%" />
         </konoma>
     </packageSourceCredentials>
 </configuration>
