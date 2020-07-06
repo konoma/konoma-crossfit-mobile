@@ -34,6 +34,7 @@ namespace Konoma.CrossFit
 
             if (!this.IsChangingConfigurations)
             {
+                this.Scene.Disconnect();
                 Scenes.Destroy(this.Scene);
             }
         }

@@ -15,6 +15,11 @@ namespace Konoma.CrossFit
         protected SceneScreenTabBarController(IntPtr handle) : base(handle) { }
         protected SceneScreenTabBarController(NSObjectFlag t) : base(t) { }
 
+        ~SceneScreenTabBarController()
+        {
+            this.Scene?.Disconnect();
+        }
+
         void ISceneScreenViewController<TScene>.SetScene(TScene scene)
         {
             this.Scene = scene;

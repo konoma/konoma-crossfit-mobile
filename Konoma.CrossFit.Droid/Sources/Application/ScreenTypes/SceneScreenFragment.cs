@@ -38,6 +38,7 @@ namespace Konoma.CrossFit
 
             if (this.IsRemoving || this.Activity.IsFinishing)
             {
+                this.Scene.Disconnect();
                 Scenes.Destroy(this.Scene);
             }
         }
