@@ -10,9 +10,23 @@
 
         void WriteInt(string key, int value);
 
+        long ReadLong(string key, long defaultValue = default);
+
+        void WriteLong(string key, long value);
+
+        float ReadFloat(string key, float defaultValue = default);
+
+        void WriteFloat(string key, float value);
+
+        double ReadDouble(string key, double defaultValue = default);
+
+        void WriteDouble(string key, double value);
+
         string? ReadString(string key);
 
         void WriteString(string key, string value);
+
+        bool HasKey(string key);
 
         void Remove(string key);
     }
