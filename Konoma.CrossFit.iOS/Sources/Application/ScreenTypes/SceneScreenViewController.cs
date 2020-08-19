@@ -1,4 +1,5 @@
 ﻿using System;
+using CoreFoundation;
 using Foundation;
 using UIKit;
 
@@ -17,7 +18,7 @@ namespace Konoma.CrossFit
 
         ~SceneScreenViewController()
         {
-            this.Scene?.Disconnect();
+            this.DisconnectFromScene();
         }
 
         void ISceneScreenViewController<TScene>.SetScene(TScene scene)
@@ -28,6 +29,26 @@ namespace Konoma.CrossFit
         void ISceneScreenViewController<TScene>.SceneConnected() { }
 
         protected TScene Scene { get; private set; } = null!;
+
+        private void DisconnectFromScene()
+        {
+            this.Scene?.Disconnect();
+            this.Scene = null!;
+        }
+
+        #endregion
+
+        #region View Lifecycle
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            base.ViewDidDisappear(animated);
+
+            if (this.IsBeingDismissed || this.IsMovingFromParentViewController)
+            {
+                DispatchQueue.MainQueue.DispatchAsync(() => this.DisconnectFromScene());
+            }
+        }
 
         #endregion
     }
