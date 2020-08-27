@@ -7,9 +7,9 @@ namespace Konoma.CrossFit.Helpers
 {
     public class Prompt
     {
-        public static Task<string?> ShowPromptAsync(PromptConfig prompt, Context context)
+        public static Task<PromptResult> ShowPromptAsync(PromptConfig prompt, Context context)
         {
-            var taskCompletionSource = new TaskCompletionSource<string?>();
+            var taskCompletionSource = new TaskCompletionSource<PromptResult>();
 
             var input = new EditText(context);
             input.Hint = prompt.Placeholder;
@@ -29,8 +29,8 @@ namespace Konoma.CrossFit.Helpers
                 .SetTitle(prompt.Title)
                 .SetMessage(prompt.Message)
                 .SetView(inputContainer)
-                .SetPositiveButton(prompt.OkText, (alert, args) => taskCompletionSource.SetResult(input.Text))
-                .SetNegativeButton(prompt.CancelText, (alert, args) => taskCompletionSource.SetResult(null));
+                .SetPositiveButton(prompt.OkText, (alert, args) => taskCompletionSource.SetResult(PromptResult.Result(input.Text)))
+                .SetNegativeButton(prompt.CancelText, (alert, args) => taskCompletionSource.SetResult(PromptResult.Cancelled()));
 
             builder.Create();
             builder.Show();

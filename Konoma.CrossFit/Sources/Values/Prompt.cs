@@ -27,4 +27,19 @@ namespace Konoma.CrossFit
 
         #endregion
     }
+
+    public struct PromptResult
+    {
+        private PromptResult(bool cancelled, string? text)
+        {
+            WasCancelled = cancelled;
+            Text = text;
+        }
+
+        public static PromptResult Cancelled() => new PromptResult(cancelled: true, text: null);
+        public static PromptResult Result(string? text) => new PromptResult(cancelled: false, text);
+
+        public bool WasCancelled { get; }
+        public string? Text { get; }
+    }
 }

@@ -7,10 +7,8 @@
         <ReleaseVersion>0.5</ReleaseVersion>
     </PropertyGroup>
     <ItemGroup>
-        <Folder Include="Sources\" />
         <Folder Include="Properties\" />
         <Folder Include="Sources\Application\" />
-        <Folder Include="Sources\Values\" />
         <Folder Include="Sources\Services\" />
     </ItemGroup>
 </Project>

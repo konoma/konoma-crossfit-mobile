@@ -43,7 +43,7 @@ namespace Konoma.CrossFit
 
         #region AlertPrompt
 
-        public Task<string?> ShowPromptAsync(PromptConfig prompt) => Prompt.ShowPromptAsync(prompt, this);
+        public Task<PromptResult> ShowPromptAsync(PromptConfig prompt) => Prompt.ShowPromptAsync(prompt, this);
 
         #endregion
 
