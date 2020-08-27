@@ -50,6 +50,6 @@ namespace Konoma.CrossFit
 
     public interface ISceneScreen {
 
-        public Task<string?> ShowPrompt(PromptConfig prompt);
+        public Task<string?> ShowPromptAsync(PromptConfig prompt);
     }
 }
