@@ -8,7 +8,7 @@ using UIKit;
 
 namespace Konoma.CrossFit.Helpers
 {
-    class Prompt
+    public class Prompt
     {
         public static Task<string?> ShowPromptAsync(PromptConfig prompt, UIViewController parentController)
         {

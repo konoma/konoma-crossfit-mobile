@@ -5,7 +5,7 @@ using Android.Widget;
 
 namespace Konoma.CrossFit.Helpers
 {
-    class Prompt
+    public class Prompt
     {
         public static Task<string?> ShowPromptAsync(PromptConfig prompt, Context context)
         {

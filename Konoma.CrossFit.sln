@@ -4,6 +4,7 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1A1BD4F8-4409-404B-9ADB-BAB90E978F48}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		Konoma.CrossFit.nuspec = Konoma.CrossFit.nuspec
 		Nuget.config.buildserver = Nuget.config.buildserver
 		README.md = README.md
