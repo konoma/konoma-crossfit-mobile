@@ -1,8 +1,8 @@
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 using CoreFoundation;
 using Foundation;
+using Konoma.CrossFit.Helpers;
 using UIKit;
 
 namespace Konoma.CrossFit
@@ -56,25 +56,7 @@ namespace Konoma.CrossFit
 
         #region AlertPrompt
 
-
-        public Task<string> ShowPrompt(PromptConfig prompt)
-        {
-            var taskCompletionSource = new TaskCompletionSource<string?>();
-
-            var alertController = UIAlertController.Create(prompt.Title, prompt.Message, UIAlertControllerStyle.Alert);
-
-            alertController.AddTextField(textField =>
-            {
-                textField.Placeholder = prompt.Placeholder;
-                textField.Text = prompt.Text;
-            });
-            alertController.AddAction(UIAlertAction.Create(prompt.OkText, UIAlertActionStyle.Default, alert => taskCompletionSource.SetResult(alertController.TextFields[0].Text)));
-            alertController.AddAction(UIAlertAction.Create(prompt.CancelText, UIAlertActionStyle.Cancel, alert => taskCompletionSource.SetResult(null)));
-
-            PresentViewController(alertController, true, null);
-
-            return taskCompletionSource.Task;
-        }
+        public Task<string?> ShowPrompt(PromptConfig prompt) => Prompt.ShowPrompt(prompt, this);
 
         #endregion
     }

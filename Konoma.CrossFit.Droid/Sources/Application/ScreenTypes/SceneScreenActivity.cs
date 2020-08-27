@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
+using Konoma.CrossFit.Helpers;
 
 namespace Konoma.CrossFit
 {
@@ -45,36 +46,7 @@ namespace Konoma.CrossFit
 
         #region AlertPrompt
 
-        public Task<string> ShowPrompt(PromptConfig prompt)
-        {
-            var taskCompletionSource = new TaskCompletionSource<string?>();
-
-            var input = new EditText(this);
-            input.Hint = prompt.Placeholder;
-            input.Text = prompt.Text;
-            input.SetSingleLine();
-
-            var inputContainerParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
-            inputContainerParams.LeftMargin = 48; // no way to get the resourcedimen in pixels as there is no resource file
-            inputContainerParams.RightMargin = inputContainerParams.LeftMargin;
-            input.LayoutParameters = inputContainerParams;
-
-            var inputContainer = new FrameLayout(this);
-            inputContainer.AddView(input);
-
-            var builder = new AndroidX.AppCompat.App.AlertDialog.Builder(this);
-            builder
-                .SetTitle(prompt.Title)
-                .SetMessage(prompt.Message)
-                .SetView(inputContainer)
-                .SetPositiveButton(prompt.OkText, (alert, args) => taskCompletionSource.SetResult(input.Text))
-                .SetNegativeButton(prompt.CancelText, (alert, args) => taskCompletionSource.SetResult(null));
-
-            builder.Create();
-            builder.Show();
-
-            return taskCompletionSource.Task;
-        }
+        public Task<string?> ShowPrompt(PromptConfig prompt) => Prompt.ShowPrompt(prompt, this);
 
         #endregion
 
