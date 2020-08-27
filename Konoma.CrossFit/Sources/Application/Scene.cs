@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Threading.Tasks;
 
 namespace Konoma.CrossFit
 {
@@ -47,5 +48,8 @@ namespace Konoma.CrossFit
         }
     }
 
-    public interface ISceneScreen { }
+    public interface ISceneScreen {
+
+        public Task<string?> ShowPromptAsync(PromptConfig prompt);
+    }
 }

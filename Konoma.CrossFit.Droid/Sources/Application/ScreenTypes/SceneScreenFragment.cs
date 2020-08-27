@@ -1,6 +1,10 @@
-﻿using Android.OS;
+using System.Threading.Tasks;
+using Android.OS;
+using Android.Views;
+using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Fragment.App;
+using Konoma.CrossFit.Helpers;
 
 namespace Konoma.CrossFit
 {
@@ -42,5 +46,11 @@ namespace Konoma.CrossFit
                 Scenes.Destroy(this.Scene);
             }
         }
+
+        #region AlertPrompt
+
+        public Task<string?> ShowPromptAsync(PromptConfig prompt) => Prompt.ShowPromptAsync(prompt, this.Context);
+
+        #endregion
     }
 }

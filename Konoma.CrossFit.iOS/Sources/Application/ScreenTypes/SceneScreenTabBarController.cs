@@ -1,6 +1,8 @@
-﻿using System;
+using System;
+using System.Threading.Tasks;
 using CoreFoundation;
 using Foundation;
+using Konoma.CrossFit.Helpers;
 using UIKit;
 
 namespace Konoma.CrossFit
@@ -69,6 +71,12 @@ namespace Konoma.CrossFit
                 DispatchQueue.MainQueue.DispatchAsync(() => this.DisconnectFromScene());
             }
         }
+
+        #endregion
+
+        #region AlertPrompt
+
+        public Task<string?> ShowPromptAsync(PromptConfig prompt) => Prompt.ShowPromptAsync(prompt, this);
 
         #endregion
     }
