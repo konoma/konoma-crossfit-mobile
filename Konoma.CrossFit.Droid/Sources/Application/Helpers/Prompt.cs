@@ -7,7 +7,7 @@ namespace Konoma.CrossFit.Helpers
 {
     class Prompt
     {
-        public static Task<string?> ShowPrompt(PromptConfig prompt, Context context)
+        public static Task<string?> ShowPromptAsync(PromptConfig prompt, Context context)
         {
             var taskCompletionSource = new TaskCompletionSource<string?>();
 

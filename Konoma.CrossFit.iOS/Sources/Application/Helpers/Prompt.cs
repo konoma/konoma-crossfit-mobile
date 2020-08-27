@@ -10,7 +10,7 @@ namespace Konoma.CrossFit.Helpers
 {
     class Prompt
     {
-        public static Task<string?> ShowPrompt(PromptConfig prompt, UIViewController parentController)
+        public static Task<string?> ShowPromptAsync(PromptConfig prompt, UIViewController parentController)
         {
             var taskCompletionSource = new TaskCompletionSource<string?>();
 
