@@ -56,6 +56,7 @@
   <ItemGroup />
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sources\Application\Helpers\Prompt.cs" />
     <Compile Include="Sources\Application\Navigator.cs" />
     <Compile Include="Sources\Application\Scenes.cs" />
     <Compile Include="Sources\Application\ScreenTypes\ISceneScreenViewController.cs" />
