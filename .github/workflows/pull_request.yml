@@ -4,6 +4,7 @@ on: pull_request
 
 env:
   LIBRARY_NAME: Konoma.CrossFit
+  NUGET_PASSWORD: ${{ secrets.KonomaPat }}
 
 jobs:
   build:
