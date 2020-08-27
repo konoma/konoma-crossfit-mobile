@@ -62,6 +62,7 @@
     <Compile Include="Sources\Application\ScreenTypes\ISceneScreenViewController.cs" />
     <Compile Include="Sources\Application\ScreenTypes\SceneScreenTabBarController.cs" />
     <Compile Include="Sources\Application\ScreenTypes\SceneScreenViewController.cs" />
+    <Compile Include="Sources\Application\ScreenTypes\SplitSceneScreneViewController.cs" />
     <Compile Include="Sources\Values\RgbColorValue.cs" />
     <Compile Include="Sources\Services\PreferencesService.cs" />
     <Compile Include="Sources\Utilities\WeakSelf.cs" />
