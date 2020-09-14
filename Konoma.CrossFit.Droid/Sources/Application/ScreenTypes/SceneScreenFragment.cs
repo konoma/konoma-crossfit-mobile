@@ -25,7 +25,14 @@ namespace Konoma.CrossFit
 
             if (this.Scene == null)
             {
-                this.Scene = Scenes.Get<TScene>(this, savedInstanceState, null);
+                if (Scenes.TryGet<TScene>(this, savedInstanceState, null) is TScene scene)
+                {
+                    this.Scene = scene;
+                }
+                else
+                {
+                    Activity.Finish();
+                }
             }
         }
 

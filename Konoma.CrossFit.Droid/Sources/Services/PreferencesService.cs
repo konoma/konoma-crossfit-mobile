@@ -9,7 +9,7 @@ namespace Konoma.CrossFit
         #region Initialization
 
         public PreferencesService(string name, FileCreationMode mode = FileCreationMode.Private)
-            : this(Application.Context.GetSharedPreferences(name, mode))
+            : this(Application.Context.GetSharedPreferences(name, mode)!)
         {
         }
 
@@ -77,7 +77,7 @@ namespace Konoma.CrossFit
 
         private void Edit(Action<ISharedPreferencesEditor> edit)
         {
-            var editor = this.Preferences.Edit();
+            var editor = this.Preferences.Edit()!;
             edit(editor);
             editor.Apply();
         }

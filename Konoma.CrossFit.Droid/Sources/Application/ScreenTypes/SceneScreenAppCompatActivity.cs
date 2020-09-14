@@ -11,21 +11,28 @@ namespace Konoma.CrossFit
     {
         protected TScene Scene { get; private set; } = null!;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle? savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            this.Scene = Scenes.Get<TScene>(this, savedInstanceState, this.Intent);
+            if (Scenes.TryGet<TScene>(this, savedInstanceState, this.Intent) is TScene scene)
+            {
+                this.Scene = scene;
+            }
+            else
+            {
+                Finish();
+            }
         }
 
-        protected override void OnSaveInstanceState(Bundle outState)
+        protected override void OnSaveInstanceState(Bundle? outState)
         {
             base.OnSaveInstanceState(outState);
 
             Scenes.Persist(this.Scene, outState);
         }
 
-        public override void OnSaveInstanceState(Bundle outState, PersistableBundle outPersistentState)
+        public override void OnSaveInstanceState(Bundle? outState, PersistableBundle? outPersistentState)
         {
             base.OnSaveInstanceState(outState, outPersistentState);
 
