@@ -5,7 +5,7 @@ namespace Konoma.CrossFit.Helpers
 {
     class Confirm
     {
-        public static Task<ConfirmationResult> ShowPromptAsync(ConfirmationConfig prompt, UIViewController parentController)
+        public static Task<ConfirmationResult> ShowConfirmationAsync(ConfirmationConfig prompt, UIViewController parentController)
         {
             var taskCompletionSource = new TaskCompletionSource<ConfirmationResult>();
 

@@ -6,7 +6,7 @@ namespace Konoma.CrossFit.Helpers
 {
     class Confirm
     {
-        public static Task<ConfirmationResult> ShowPromptAsync(ConfirmationConfig prompt, Context context)
+        public static Task<ConfirmationResult> ShowConfirmationAsync(ConfirmationConfig prompt, Context context)
         {
             var taskCompletionSource = new TaskCompletionSource<ConfirmationResult>();
             var inputContainer = new FrameLayout(context);
