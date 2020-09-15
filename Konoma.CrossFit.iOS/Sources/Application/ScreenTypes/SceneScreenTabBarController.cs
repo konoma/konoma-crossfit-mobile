@@ -76,8 +76,9 @@ namespace Konoma.CrossFit
 
         #region Alert
 
-        public Task<PromptResult> ShowPromptAsync(PromptConfig prompt) => Prompt.ShowPromptAsync(prompt, this);
-        public Task<ConfirmationResult> ShowConfirmationAsync(ConfirmationConfig confirmation) => Confirm.ShowConfirmationAsync(confirmation, this);
+        public Task<AlertPromptResult> ShowPromptAsync(AlertPromptConfig prompt) => Alert.ShowPromptAsync(prompt, this);
+        public Task<AlertConfirmationResult> ShowConfirmationAsync(AlertConfirmationConfig confirmation) => Alert.ShowConfirmationAsync(confirmation, this);
+        public Task ShowAlert(AlertMessageConfig alertConfig) => Alert.ShowAlertAsync(alertConfig, this);
 
         #endregion
     }
