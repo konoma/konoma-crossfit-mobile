@@ -81,14 +81,12 @@ namespace Konoma.CrossFit
         public string Title { get; set; }
         public string Message { get; set; }
         public string OkText { get; set; }
-        public string CancelText { get; set; }
 
-        public AlertMessageConfig(string title, string message, string okText, string cancelText)
+        public AlertMessageConfig(string title, string message, string okText)
         {
             Title = title;
             Message = message;
             OkText = okText;
-            CancelText = cancelText;
         }
 
         #endregion
