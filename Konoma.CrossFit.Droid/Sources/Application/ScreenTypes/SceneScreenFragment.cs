@@ -1,6 +1,10 @@
-﻿using Android.OS;
+using System.Threading.Tasks;
+using Android.OS;
+using Android.Views;
+using Android.Widget;
 using AndroidX.AppCompat.App;
 using AndroidX.Fragment.App;
+using Konoma.CrossFit.Helpers;
 
 namespace Konoma.CrossFit
 {
@@ -21,7 +25,14 @@ namespace Konoma.CrossFit
 
             if (this.Scene == null)
             {
-                this.Scene = Scenes.Get<TScene>(this, savedInstanceState, null);
+                if (Scenes.TryGet<TScene>(this, savedInstanceState, null) is TScene scene)
+                {
+                    this.Scene = scene;
+                }
+                else
+                {
+                    Activity.Finish();
+                }
             }
         }
 
@@ -38,8 +49,17 @@ namespace Konoma.CrossFit
 
             if (this.IsRemoving || this.Activity.IsFinishing)
             {
+                this.Scene.Disconnect();
                 Scenes.Destroy(this.Scene);
             }
         }
+
+        #region Alert
+
+        public Task<AlertPromptResult> ShowPromptAsync(AlertPromptConfig prompt) => Alert.ShowPromptAsync(prompt, this.Context);
+        public Task<AlertConfirmationResult> ShowConfirmationAsync(AlertConfirmationConfig confirmation) => Alert.ShowConfirmationAsync(confirmation, this.Context);
+        public Task ShowAlert(AlertMessageConfig alertConfig) => Alert.ShowAlertAsync(alertConfig, this.Context);
+
+        #endregion
     }
 }

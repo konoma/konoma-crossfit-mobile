@@ -1,5 +1,8 @@
-﻿using System;
+using System;
+using System.Threading.Tasks;
+using CoreFoundation;
 using Foundation;
+using Konoma.CrossFit.Helpers;
 using UIKit;
 
 namespace Konoma.CrossFit
@@ -15,6 +18,11 @@ namespace Konoma.CrossFit
         protected SceneScreenTabBarController(IntPtr handle) : base(handle) { }
         protected SceneScreenTabBarController(NSObjectFlag t) : base(t) { }
 
+        ~SceneScreenTabBarController()
+        {
+            this.DisconnectFromScene();
+        }
+
         void ISceneScreenViewController<TScene>.SetScene(TScene scene)
         {
             this.Scene = scene;
@@ -24,6 +32,12 @@ namespace Konoma.CrossFit
         {
             this.IsInitialized = true;
             this.TryConfigureView();
+        }
+
+        private void DisconnectFromScene()
+        {
+            this.Scene?.Disconnect();
+            this.Scene = null!;
         }
 
         protected TScene Scene { get; private set; } = null!;
@@ -48,7 +62,24 @@ namespace Konoma.CrossFit
 
         protected virtual void ConfigureView() { }
 
+        public override void ViewDidDisappear(bool animated)
+        {
+            base.ViewDidDisappear(animated);
+
+            if (this.IsBeingDismissed || this.IsMovingFromParentViewController)
+            {
+                DispatchQueue.MainQueue.DispatchAsync(() => this.DisconnectFromScene());
+            }
+        }
+
         #endregion
 
+        #region Alert
+
+        public Task<AlertPromptResult> ShowPromptAsync(AlertPromptConfig prompt) => Alert.ShowPromptAsync(prompt, this);
+        public Task<AlertConfirmationResult> ShowConfirmationAsync(AlertConfirmationConfig confirmation) => Alert.ShowConfirmationAsync(confirmation, this);
+        public Task ShowAlert(AlertMessageConfig alertConfig) => Alert.ShowAlertAsync(alertConfig, this);
+
+        #endregion
     }
 }

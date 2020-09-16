@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Threading.Tasks;
 
 namespace Konoma.CrossFit
 {
@@ -14,6 +15,8 @@ namespace Konoma.CrossFit
         protected Coordinator Coordinator { get; }
 
         internal abstract void Connect(ISceneScreen screen);
+
+        internal abstract void Disconnect();
     }
 
     public abstract class Scene<TSceneScreen> : Scene where TSceneScreen : class, ISceneScreen
@@ -26,14 +29,29 @@ namespace Konoma.CrossFit
             this.Connected();
         }
 
-        private WeakReference<TSceneScreen> _Screen = null!;
+        internal override void Disconnect()
+        {
+            this._Screen = null;
+            this.Disconnected();
+        }
 
-        protected TSceneScreen Screen => this._Screen.TryGetTarget(out var screen)
+        private WeakReference<TSceneScreen>? _Screen = null;
+
+        protected TSceneScreen Screen => this._Screen is WeakReference<TSceneScreen> screenRef && screenRef.TryGetTarget(out var screen)
             ? screen
-            : throw new InvalidOperationException("Tried to read scene after it's not available anymore");
+            : throw new InvalidOperationException("Tried to read screen after it's not available anymore");
 
         protected abstract void Connected();
+
+        protected virtual void Disconnected()
+        {
+        }
     }
 
-    public interface ISceneScreen { }
+    public interface ISceneScreen {
+
+        public Task<AlertPromptResult> ShowPromptAsync(AlertPromptConfig prompt);
+        public Task<AlertConfirmationResult> ShowConfirmationAsync(AlertConfirmationConfig confirmation);
+        public Task ShowAlert(AlertMessageConfig alertConfig);
+    }
 }

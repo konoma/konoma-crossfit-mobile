@@ -10,9 +10,9 @@ namespace Konoma.CrossFit
         private static readonly IDictionary<string, Scene> PersistedScenes = new Dictionary<string, Scene>();
         private const string IdentifierKey = "Konoma.Modular::SceneIdentifier";
 
-        public static TScene Get<TScene>(
+        public static TScene? TryGet<TScene>(
             ISceneScreen screen,
-            Bundle savedInstanceState,
+            Bundle? savedInstanceState,
             Intent? intent,
             string? launchId = null
         )
@@ -22,12 +22,7 @@ namespace Konoma.CrossFit
                 ?? Retrieve<TScene>(intent?.GetStringExtra(IdentifierKey))
                 ?? Retrieve<TScene>(GetLaunchKey(typeof(TScene), launchId));
 
-            if (scene == null)
-            {
-                throw new InvalidOperationException("Unable to retrieve scene");
-            }
-
-            scene.Connect(screen);
+            scene?.Connect(screen);
             return scene;
         }
 
@@ -45,16 +40,26 @@ namespace Konoma.CrossFit
 
         private static TScene? Retrieve<TScene>(string? key) where TScene : Scene
         {
-            if (key == null) { return null; }
+            if (key == null)
+            {
+                return null;
+            }
 
-            var scene = (TScene)PersistedScenes[key];
+            if (!PersistedScenes.TryGetValue(key, out var scene))
+            {
+                return null;
+            }
+
             PersistedScenes.Remove(key);
-            return scene;
+            return (TScene)scene;
         }
 
         public static void Persist(Scene scene, Bundle? savedInstanceState)
         {
-            if (savedInstanceState == null) { return; }
+            if (savedInstanceState == null)
+            {
+                return;
+            }
 
             PersistedScenes[scene.Identifier] = scene;
             savedInstanceState.PutString(IdentifierKey, scene.Identifier);

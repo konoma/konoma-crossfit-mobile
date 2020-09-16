@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
@@ -7,10 +7,8 @@
         <ReleaseVersion>0.5</ReleaseVersion>
     </PropertyGroup>
     <ItemGroup>
-        <Folder Include="Sources\" />
         <Folder Include="Properties\" />
         <Folder Include="Sources\Application\" />
-        <Folder Include="Sources\Values\" />
         <Folder Include="Sources\Services\" />
     </ItemGroup>
 </Project>

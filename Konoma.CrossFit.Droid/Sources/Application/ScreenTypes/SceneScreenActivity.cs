@@ -1,5 +1,7 @@
-﻿using Android.App;
+using System.Threading.Tasks;
+using Android.App;
 using Android.OS;
+using Konoma.CrossFit.Helpers;
 
 namespace Konoma.CrossFit
 {
@@ -7,21 +9,28 @@ namespace Konoma.CrossFit
     {
         protected TScene Scene { get; private set; } = null!;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle? savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            this.Scene = Scenes.Get<TScene>(this, savedInstanceState, this.Intent);
+            if (Scenes.TryGet<TScene>(this, savedInstanceState, this.Intent) is TScene scene)
+            {
+                this.Scene = scene;
+            }
+            else
+            {
+                Finish();
+            }
         }
 
-        protected override void OnSaveInstanceState(Bundle outState)
+        protected override void OnSaveInstanceState(Bundle? outState)
         {
             base.OnSaveInstanceState(outState);
 
             Scenes.Persist(this.Scene, outState);
         }
 
-        public override void OnSaveInstanceState(Bundle outState, PersistableBundle outPersistentState)
+        public override void OnSaveInstanceState(Bundle? outState, PersistableBundle? outPersistentState)
         {
             base.OnSaveInstanceState(outState, outPersistentState);
 
@@ -34,8 +43,18 @@ namespace Konoma.CrossFit
 
             if (this.IsFinishing)
             {
+                this.Scene.Disconnect();
                 Scenes.Destroy(this.Scene);
             }
         }
+
+        #region Alert
+
+        public Task<AlertPromptResult> ShowPromptAsync(AlertPromptConfig prompt) => Alert.ShowPromptAsync(prompt, this);
+        public Task<AlertConfirmationResult> ShowConfirmationAsync(AlertConfirmationConfig confirmation) => Alert.ShowConfirmationAsync(confirmation, this);
+        public Task ShowAlert(AlertMessageConfig alertConfig) => Alert.ShowAlertAsync(alertConfig, this);
+
+        #endregion
+
     }
 }
