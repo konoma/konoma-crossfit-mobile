@@ -40,17 +40,22 @@ namespace Konoma.CrossFit
         {
             base.OnSaveInstanceState(outState);
 
-            Scenes.Persist(this.Scene, outState);
+            if (this.Scene != null)
+            {
+                Scenes.Persist(this.Scene, outState);
+            }
         }
 
         public override void OnDestroy()
         {
             base.OnDestroy();
 
-            if (this.IsRemoving || this.Activity.IsFinishing)
+            if ((this.IsRemoving || this.Activity.IsFinishing) && this.Scene != null)
             {
                 this.Scene.Disconnect();
                 Scenes.Destroy(this.Scene);
+
+                this.Scene = null!;
             }
         }
 

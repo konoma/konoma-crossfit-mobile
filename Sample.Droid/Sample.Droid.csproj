@@ -136,7 +136,7 @@
         <Name>Konoma.CrossFit.Droid</Name>
       </ProjectReference>
       <ProjectReference Include="..\Sample.Core\Sample.Core.csproj">
-        <Project>{74AE95D1-C573-4703-AD4B-346C7BE28B0D}</Project>
+        <Project>{AB0E7E3C-38A0-4C6B-AFFD-12BA1225DCDF}</Project>
         <Name>Sample.Core</Name>
       </ProjectReference>
     </ItemGroup>
