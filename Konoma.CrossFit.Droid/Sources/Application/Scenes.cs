@@ -81,6 +81,6 @@ namespace Konoma.CrossFit
             PersistedScenes.Remove(scene.Identifier);
         }
 
-        private static string GetLaunchKey(System.Type sceneType, string? id) => $"LaunchScene-{sceneType.FullName}-{id ?? ""}";
+        private static string GetLaunchKey(Type sceneType, string? id) => $"LaunchScene-{sceneType.FullName}-{id ?? ""}";
     }
 }
