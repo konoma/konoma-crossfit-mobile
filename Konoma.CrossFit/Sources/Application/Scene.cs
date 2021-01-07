@@ -31,8 +31,8 @@ namespace Konoma.CrossFit
 
         internal override void Disconnect()
         {
-            this._Screen = null;
             this.Disconnected();
+            this._Screen = null;
         }
 
         private WeakReference<TSceneScreen>? _Screen = null;

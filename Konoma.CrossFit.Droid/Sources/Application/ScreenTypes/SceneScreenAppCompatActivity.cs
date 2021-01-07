@@ -45,15 +45,15 @@ namespace Konoma.CrossFit
 
         protected override void OnDestroy()
         {
-            base.OnDestroy();
-
-            if (this.IsFinishing && this.Scene != null)
+            if (this.IsFinishing && this.Scene is Scene scene)
             {
-                this.Scene.Disconnect();
-                Scenes.Destroy(this.Scene);
+                scene.Disconnect();
+                Scenes.Destroy(scene);
 
                 this.Scene = null!;
             }
+
+            base.OnDestroy();
         }
 
 
