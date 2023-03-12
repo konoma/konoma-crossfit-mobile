@@ -29,4 +29,4 @@ jobs:
 
       - name: Build library
         run: |
-          .build/xamarin-library/build.sh
+          dotnet build
