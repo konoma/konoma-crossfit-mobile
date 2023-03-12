@@ -15,12 +15,13 @@ jobs:
 
     steps:
       - name: Checkout Source Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Checkout Build Scripts
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: konoma/actions-buildscripts
+          ref: master
           token: ${{ secrets.KonomaPat }}
           path: .build
 
