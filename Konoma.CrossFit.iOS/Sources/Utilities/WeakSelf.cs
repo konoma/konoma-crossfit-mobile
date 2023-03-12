@@ -1,7 +1,4 @@
-﻿using System;
-using Foundation;
-
-namespace Konoma.CrossFit
+﻿namespace Konoma.CrossFit
 {
     /// <summary>
     /// Small wrapper around <see cref="WeakReference{T}"/> for easier access.

@@ -1,6 +1,3 @@
-using System.Threading.Tasks;
-using UIKit;
-
 namespace Konoma.CrossFit.Helpers
 {
     public class Alert

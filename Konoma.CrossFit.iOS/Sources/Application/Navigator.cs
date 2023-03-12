@@ -1,6 +1,4 @@
-﻿using System;
-using CoreFoundation;
-using UIKit;
+﻿using CoreFoundation;
 
 namespace Konoma.CrossFit
 {
@@ -11,7 +9,7 @@ namespace Konoma.CrossFit
             where TSceneScreen : UIViewController, ISceneScreen, ISceneScreenViewController<TScene>
         {
             var navigationController = parentController as UINavigationController ?? parentController.NavigationController;
-            navigationController.PushViewController(Scenes.Setup(scene, screen), true);
+            navigationController?.PushViewController(Scenes.Setup(scene, screen), true);
         }
 
         public static void NavigateModal<TScene, TSceneScreen>(UIViewController parentController, TScene scene, TSceneScreen screen, Func<TSceneScreen, UIViewController>? wrapper = default)

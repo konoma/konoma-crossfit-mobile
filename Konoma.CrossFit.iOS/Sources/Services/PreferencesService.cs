@@ -1,6 +1,4 @@
-﻿using Foundation;
-
-namespace Konoma.CrossFit
+﻿namespace Konoma.CrossFit
 {
     public class PreferencesService : IPreferencesService
     {

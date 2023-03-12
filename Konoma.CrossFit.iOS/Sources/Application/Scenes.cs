@@ -1,6 +1,4 @@
-﻿using UIKit;
-
-namespace Konoma.CrossFit
+﻿namespace Konoma.CrossFit
 {
     public static class Scenes
     {

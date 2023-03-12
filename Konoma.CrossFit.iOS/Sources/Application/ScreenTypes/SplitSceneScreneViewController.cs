@@ -1,8 +1,4 @@
-using System;
-using System.Threading.Tasks;
-using Foundation;
 using Konoma.CrossFit.Helpers;
-using UIKit;
 
 namespace Konoma.CrossFit
 {

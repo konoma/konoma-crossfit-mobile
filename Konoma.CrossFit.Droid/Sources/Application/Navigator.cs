@@ -1,7 +1,4 @@
-﻿using System;
-using Android.App;
-using Android.Content;
-using Android.OS;
+﻿using Android.Content;
 
 namespace Konoma.CrossFit
 {

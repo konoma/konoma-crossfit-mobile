@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Android.OS;
 using AndroidX.AppCompat.App;
 using Konoma.CrossFit.Helpers;

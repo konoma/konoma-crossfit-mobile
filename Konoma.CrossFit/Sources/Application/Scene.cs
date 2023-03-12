@@ -1,6 +1,3 @@
-using System;
-using System.Threading.Tasks;
-
 namespace Konoma.CrossFit
 {
     public abstract class Scene

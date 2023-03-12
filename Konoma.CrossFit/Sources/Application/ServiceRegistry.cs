@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Konoma.CrossFit
+﻿namespace Konoma.CrossFit
 {
     public delegate T ServiceLoader<T>();
 

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace Konoma.CrossFit
+﻿namespace Konoma.CrossFit
 {
     public sealed class Coordinator
     {

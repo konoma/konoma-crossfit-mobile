@@ -1,7 +1,5 @@
-using System.Threading.Tasks;
 using Android.Content;
 using Android.Views;
-using Android.Widget;
 
 namespace Konoma.CrossFit.Helpers
 {
