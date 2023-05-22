@@ -31,13 +31,18 @@ namespace Konoma.CrossFit
 
         internal override void Disconnect()
         {
+            if (this._Screen is null)
+            {
+                return;
+            }
+
             this.Disconnected();
             this._Screen = null;
         }
 
         private WeakReference<TSceneScreen>? _Screen = null;
 
-        protected TSceneScreen Screen => this._Screen is WeakReference<TSceneScreen> screenRef && screenRef.TryGetTarget(out var screen)
+        protected TSceneScreen Screen => this._Screen is { } screenRef && screenRef.TryGetTarget(out var screen)
             ? screen
             : throw new InvalidOperationException("Tried to read screen after it's not available anymore");
 
@@ -48,8 +53,8 @@ namespace Konoma.CrossFit
         }
     }
 
-    public interface ISceneScreen {
-
+    public interface ISceneScreen
+    {
         public Task<AlertPromptResult> ShowPromptAsync(AlertPromptConfig prompt);
         public Task<AlertConfirmationResult> ShowConfirmationAsync(AlertConfirmationConfig confirmation);
         public Task ShowAlert(AlertMessageConfig alertConfig);

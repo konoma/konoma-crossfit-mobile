@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="androidx.arch.core.core-common">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/packages/Xamarin.AndroidX.Arch.Core.Common.2.1.0.1/jar/androidx.arch.core.core-common.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
